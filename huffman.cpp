@@ -13,7 +13,6 @@ void Select(HuffmanTree &ht, int i, int &s1, int &s2) {
     }
     min=INT_MAX;
     for (int j = 0; j < i; ++j) {
-        int w = ht[j].weight;
         if (ht[j].parent == 0 &&j != s1 && ht[j].weight < min) {
             s2 = j;
         }
