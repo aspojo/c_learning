@@ -1,11 +1,12 @@
 //
 // Created by lin.chen1 on 2022/9/16.
 //
-#include <iostream>
-#include <cstring>
 
 #ifndef C_LEARNING_HUFFMAN_H
 #define C_LEARNING_HUFFMAN_H
+
+#include <iostream>
+#include <cstring>
 
 typedef struct {
     int weight;
