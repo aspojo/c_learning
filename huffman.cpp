@@ -53,5 +53,6 @@ void HuffmanCoding(HuffmanTree &huffmanTree, HuffmanCode &huffmanCode, int *w, i
         huffmanCode[i] = (char *) malloc((n - end) * sizeof(char));
         strcpy(huffmanCode[i], &tmp[end]);
     }
+    free(tmp);
 
 }
