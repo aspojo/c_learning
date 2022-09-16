@@ -17,6 +17,6 @@ typedef char **HuffmanCode;
 
 void HuffmanCoding(HuffmanTree &huffmanTree, HuffmanCode &huffmanCode, int *w, int n) ;
 
-
+void Encoding(HuffmanCode huffmanCode, char * str,int strLen,char * code);
 
 #endif //C_LEARNING_HUFFMAN_H

@@ -1,23 +1,23 @@
 //
 // Created by lin.chen1 on 2022/9/16.
 //
-
+// a(7) b(5) c(2) d(4)
 #include "huffman.h"
 
 void Select(HuffmanTree &ht, int i, int &s1, int &s2) {
-    int min=INT_MAX;
+    int min = INT_MAX;
     for (int j = 0; j < i; ++j) {
         if (ht[j].parent == 0 && ht[j].weight < min) {
             s1 = j;
         }
     }
-    min=INT_MAX;
+    min = INT_MAX;
     for (int j = 0; j < i; ++j) {
-        if (ht[j].parent == 0 &&j != s1 && ht[j].weight < min) {
+        if (ht[j].parent == 0 && j != s1 && ht[j].weight < min) {
             s2 = j;
         }
     }
-    std::cout <<"select: "<< s1 << ' ' << s2 << std::endl;
+    std::cout << "select: " << s1 << ' ' << s2 << std::endl;
 }
 
 void HuffmanCoding(HuffmanTree &huffmanTree, HuffmanCode &huffmanCode, int *w, int n) {
@@ -41,7 +41,7 @@ void HuffmanCoding(HuffmanTree &huffmanTree, HuffmanCode &huffmanCode, int *w, i
     huffmanCode = (HuffmanCode) malloc((n + 1) * sizeof(HuffmanCode));
     char *tmp = (char *) malloc(n * sizeof(char));
     tmp[n - 1] = '\0';
-    for (int i = 0; i <n; ++i) {
+    for (int i = 0; i < n; ++i) {
         int c = i;
         int p = huffmanTree[i].parent;
         int end = n - 1;
@@ -56,3 +56,14 @@ void HuffmanCoding(HuffmanTree &huffmanTree, HuffmanCode &huffmanCode, int *w, i
     free(tmp);
 
 }
+void append(char*t,char*s) {
+    while (*t != 0) t++;
+    while ((*t++ = *s++) != 0);
+}
+void Encoding(HuffmanCode huffmanCode, char *str, int strLen, char *code) {
+    for (int i = 0; i < strLen; ++i) {
+        char * s= huffmanCode[str[i]-'a'];
+        append(code,s);
+    }
+}
+
