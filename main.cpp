@@ -19,6 +19,9 @@ int main() {
     std::cout<<"encoding: " << code << std::endl;
 
     char s[1024];
+    for (int i = 0; i < 1024; ++i) {
+        s[i] = 0;
+    }
     Decoding(HT, len, code, s);
     std::cout<<"decoding: " << s;
 
