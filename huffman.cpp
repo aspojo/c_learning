@@ -56,14 +56,31 @@ void HuffmanCoding(HuffmanTree &huffmanTree, HuffmanCode &huffmanCode, int *w, i
     free(tmp);
 
 }
-void append(char*t,char*s) {
+
+void append(char *t, char *s) {
     while (*t != 0) t++;
     while ((*t++ = *s++) != 0);
 }
+
 void Encoding(HuffmanCode huffmanCode, char *str, int strLen, char *code) {
     for (int i = 0; i < strLen; ++i) {
-        char * s= huffmanCode[str[i]-'a'];
-        append(code,s);
+        char *s = huffmanCode[str[i] - 'a'];
+        append(code, s);
     }
 }
+
+void Decoding(HuffmanTree huffmanTree, int n, char *code, char *str) {
+    int c = 2 * n - 2;
+    while (*code != '\0') {
+        c = *code == '0' ? huffmanTree[c].lchild : huffmanTree[c].rchild;
+        if (huffmanTree[c].lchild == 0 && huffmanTree[c].rchild == 0) {
+            char cs[2]={'a','\0'};
+            cs[0] = (char) ('a' + c);
+            append(str, cs);
+            c = 2 * n - 2;
+        }
+        code++;
+    }
+}
+
 

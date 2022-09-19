@@ -19,4 +19,5 @@ void HuffmanCoding(HuffmanTree &huffmanTree, HuffmanCode &huffmanCode, int *w, i
 
 void Encoding(HuffmanCode huffmanCode, char * str,int strLen,char * code);
 
+void Decoding(HuffmanTree huffmanTree, int n, char * code, char * str);
 #endif //C_LEARNING_HUFFMAN_H
