@@ -74,8 +74,8 @@ void Decoding(HuffmanTree huffmanTree, int n, char *code, char *str) {
     while (*code != '\0') {
         c = *code == '0' ? huffmanTree[c].lchild : huffmanTree[c].rchild;
         if (huffmanTree[c].lchild == 0 && huffmanTree[c].rchild == 0) {
-            char cs[2]={'a','\0'};
-            cs[0] = (char) ('a' + c);
+            char cs[] = "a";
+            cs[0] += c;
             append(str, cs);
             c = 2 * n - 2;
         }
