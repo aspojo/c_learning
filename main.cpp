@@ -37,6 +37,6 @@ void testQueue() {
 
 int main() {
     testHuffmanTree();
-    testHuffmanTree();
+    testQueue();
     return 0;
 }
