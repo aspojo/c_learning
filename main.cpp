@@ -1,6 +1,8 @@
 #include <iostream>
 #include "huffman.h"
 #include "queue"
+#include "vector"
+#include "list/Node.h"
 
 void testHuffmanTree() {
     HuffmanTree HT;
@@ -28,15 +30,29 @@ void testHuffmanTree() {
 
 void testQueue() {
     std::queue<HTNode> myQueue;
-    myQueue.push({1, 1, 1, 1});
+    myQueue.push({1, 2, 3, 4});
     std::cout << myQueue.size() << std::endl;
+    std::cout << myQueue.front().rchild << std::endl;
     myQueue.pop();
     std::cout << myQueue.size() << std::endl;
+    std::cout << myQueue.front().rchild << std::endl;
+    std::vector<char *> v;
+    v.push_back("dfd");
 
 }
 
+void testList(){
+    List<char *> list;
+    Node<char *>  node;
+    node.data="aaa";
+    list.head= &node;
+    list.size=1;
+    std::cout<<list.head[7].data<<"sdfg"<< std::endl;
+
+}
 int main() {
     testHuffmanTree();
     testQueue();
+    testList();
     return 0;
 }
