@@ -45,13 +45,21 @@ void testList() {
     List<char *> list;
     for (int i = 0; i < 12; ++i) {
         char * data = (char * )malloc(10);
-        sprintf(data,"item %d ",i);
-        list.add(data) ;
+//        char * data = (char * )malloc(10); 正确
+//        char *  data = new char[10]; 正确
+
+//        char  data[10]; 错误
+//        char data[] = {0, 0, 0, 0, 0, 0, 0, 0, 0}; 错误
+
+        sprintf(data, "item %d ", i);
+        list.add(data);
     }
 
     int size = list.size;
     for (int i = 0; i < size; ++i) {
-        std::cout << "list pop: "<< *list.pop() << std::endl;
+        char ** data = list.pop();
+        std::cout << "list pop: " << *data << std::endl;
+        delete(data);
     }
 
 
