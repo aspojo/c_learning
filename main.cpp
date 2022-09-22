@@ -2,7 +2,7 @@
 #include "huffman.h"
 #include "queue"
 #include "vector"
-#include "list/Node.h"
+#include "list/List.h"
 
 void testHuffmanTree() {
     HuffmanTree HT;
@@ -14,14 +14,14 @@ void testHuffmanTree() {
         std::cout << (char) ('a' + i) << ": " << HC[i] << std::endl;
     }
     char code[1024];
-    for (char & i : code) {
+    for (char &i: code) {
         i = 0;
     }
     Encoding(HC, "aabbcc", 6, code);
     std::cout << "encoding: " << code << std::endl;
 
     char s[1024];
-    for (char & i : s) {
+    for (char &i: s) {
         i = 0;
     }
     Decoding(HT, len, code, s);
@@ -41,15 +41,22 @@ void testQueue() {
 
 }
 
-void testList(){
+void testList() {
     List<char *> list;
-    Node<char *>  node;
-    node.data="aaa";
-    list.head= &node;
-    list.size=1;
-    std::cout<<list.head[7].data<<"sdfg"<< std::endl;
+    for (int i = 0; i < 12; ++i) {
+        char * data = (char * )malloc(10);
+        sprintf(data,"item %d ",i);
+        list.add(data) ;
+    }
+
+    int size = list.size;
+    for (int i = 0; i < size; ++i) {
+        std::cout << "list pop: "<< *list.pop() << std::endl;
+    }
+
 
 }
+
 int main() {
     testHuffmanTree();
     testQueue();
