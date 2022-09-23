@@ -64,10 +64,14 @@ void testList() {
 
 
 }
-
+void testInputOutput(){
+    char c = getchar();
+    putchar(c);
+}
 int main() {
     testHuffmanTree();
     testQueue();
     testList();
+    testInputOutput();
     return 0;
 }
