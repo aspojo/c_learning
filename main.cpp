@@ -65,8 +65,14 @@ void testList() {
 
 }
 void testInputOutput(){
-    char c = getchar();
-    putchar(c);
+    // Ctrl+C 就是EOF
+    char c ;
+    while ((c=getchar())!=EOF){
+        putchar(c);
+    }
+    putchar('e');
+    putchar('o');
+    putchar('f');
 }
 int main() {
     testHuffmanTree();
