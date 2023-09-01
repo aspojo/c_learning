@@ -41,6 +41,13 @@ struct List {
         size--;
         return &ele->data;
     }
+    Object * take(){
+        Node<Object> * ele = head->next;
+        head->next=head->next->next;
+        head->next->prev=head;
+        size--;
+        return &ele->data;
+    }
 };
 
 #endif //C_LEARNING_LIST_H

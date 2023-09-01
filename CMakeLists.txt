@@ -3,4 +3,4 @@ project(c_learning)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(c_learning main.cpp huffman.cpp huffman.h list/List.h)
+add_executable(c_learning main.cpp huffman.cpp huffman.h list/List.h graph/AlGraph.h graph/AlGraph.cpp)

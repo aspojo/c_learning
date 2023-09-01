@@ -3,6 +3,7 @@
 #include "queue"
 #include "vector"
 #include "list/List.h"
+#include "graph/AlGraph.h"
 
 void testHuffmanTree() {
     HuffmanTree HT;
@@ -44,7 +45,7 @@ void testQueue() {
 void testList() {
     List<char *> list;
     for (int i = 0; i < 12; ++i) {
-        char * data = (char * )malloc(10);
+        char *data = (char *) malloc(10);
 //        char * data = (char * )malloc(10); 正确
 //        char *  data = new char[10]; 正确
 
@@ -57,27 +58,58 @@ void testList() {
 
     int size = list.size;
     for (int i = 0; i < size; ++i) {
-        char ** data = list.pop();
+        char **data = list.pop();
         std::cout << "list pop: " << *data << std::endl;
-        delete(data);
+        delete (data);
     }
 
 
 }
-void testInputOutput(){
+
+void testInputOutput() {
     // Ctrl+C 就是EOF
-    char c ;
-    while ((c=getchar())!=EOF){
+    char c;
+    while ((c = getchar()) != EOF) {
         putchar(c);
     }
     putchar('e');
     putchar('o');
     putchar('f');
 }
+
+void testAlGraph() {
+    AlGraph graph ;
+    initGraph(graph);
+    addVNode(graph, 1000);
+    addVNode(graph, 1001);
+    addVNode(graph, 1002);
+    addVNode(graph, 1003);
+    addVNode(graph, 1004);
+    addVNode(graph, 1005);
+    addVNode(graph, 1006);
+    addVNode(graph, 1007);
+    addArcNode(graph, 0, 1, 0);
+    addArcNode(graph, 1, 2, 1);
+    addArcNode(graph, 1, 3, 2);
+    addArcNode(graph, 2, 4, 3);
+    addArcNode(graph, 3, 4, 4);
+    addArcNode(graph, 4, 5, 5);
+    addArcNode(graph, 4, 6, 6);
+    addArcNode(graph, 5, 7, 7);
+    addArcNode(graph, 6, 7, 8);
+
+    std::cout << graph.arcNum << "  " << graph.vexNum<<std::endl;
+    topologicalSort(graph);
+    criticalPath(graph);
+
+
+}
+
 int main() {
-    testHuffmanTree();
-    testQueue();
-    testList();
-    testInputOutput();
+//    testHuffmanTree();
+//    testQueue();
+//    testList();
+//    testInputOutput();
+    testAlGraph();
     return 0;
 }
