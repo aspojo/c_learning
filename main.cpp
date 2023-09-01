@@ -98,7 +98,7 @@ void testAlGraph() {
     addArcNode(graph, 5, 7, 7);
     addArcNode(graph, 6, 7, 8);
 
-    std::cout << graph.arcNum << "  " << graph.vexNum<<std::endl;
+    std::cout <<"arc num : "<< graph.arcNum << "  vex num : " << graph.vexNum<<std::endl;
     topologicalSort(graph);
     criticalPath(graph);
 

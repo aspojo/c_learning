@@ -50,6 +50,7 @@ void topologicalSort(AlGraph &graph) {
             stack.add(i);
         }
     }
+    std::cout<<"topological order : ";
     while (stack.size > 0) {
         int vIndex = *stack.pop();
         VNode *vNode = &graph.vertices[vIndex];
