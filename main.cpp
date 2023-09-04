@@ -101,6 +101,8 @@ void testAlGraph() {
     std::cout <<"arc num : "<< graph.arcNum << "  vex num : " << graph.vexNum<<std::endl;
     topologicalSort(graph);
     criticalPath(graph);
+    DFSTraverse(graph);
+    BFSTraverse(graph);
 
 
 }

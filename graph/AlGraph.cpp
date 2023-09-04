@@ -4,6 +4,8 @@
 #include <iostream>
 #include "AlGraph.h"
 
+using namespace std;
+
 void initGraph(AlGraph &graph) {
     graph.arcNum = 0;
     graph.vexNum = 0;
@@ -50,7 +52,7 @@ void topologicalSort(AlGraph &graph) {
             stack.add(i);
         }
     }
-    std::cout<<"topological order : ";
+    std::cout << "topological order : ";
     while (stack.size > 0) {
         int vIndex = *stack.pop();
         VNode *vNode = &graph.vertices[vIndex];
@@ -62,7 +64,7 @@ void topologicalSort(AlGraph &graph) {
             }
         }
     }
-    std::cout <<std::endl;
+    std::cout << std::endl;
 }
 
 void findInDegree(AlGraph &graph, int *inDegree) {
@@ -114,8 +116,8 @@ void criticalPath(AlGraph &graph) {
     }
     List<int> s;
     topologicalSort(graph, ve, s);
-    for (int & i : vl) {
-        i = ve[graph.vexNum-1];
+    for (int &i: vl) {
+        i = ve[graph.vexNum - 1];
     }
     while (s.size != 0) {
         int j = *s.pop();
@@ -133,8 +135,8 @@ void criticalPath(AlGraph &graph) {
     List<VNode *> list;
     for (int i = 0; i < graph.vexNum; ++i) {
         int e = ve[i], l = vl[i];
-        if (e == l ) {
-            VNode *v=&graph.vertices[i];
+        if (e == l) {
+            VNode *v = &graph.vertices[i];
             list.add(v);
             std::cout << graph.vertices[i].data << " ";
 
@@ -144,3 +146,51 @@ void criticalPath(AlGraph &graph) {
 
 }
 
+void DFS(AlGraph &graph, int i, bool *visited);
+
+void DFSTraverse(AlGraph &graph) {
+    bool visited[MAX_VERTEX_NUM];
+    for (bool &i: visited) {
+        i = false;
+    }
+    cout << "DFS traverse: ";
+    DFS(graph, 0, visited);
+    cout << endl;
+}
+
+void DFS(AlGraph &graph, int i, bool *visited) {
+    cout << graph.vertices[i].data << " ";
+    visited[i] = true;
+    for (ArcNode *p = graph.vertices[i].firstArc; p; p = p->nextArc) {
+        if (!visited[p->adjVex]) {
+            DFS(graph, p->adjVex, visited);
+        }
+    }
+}
+
+
+void BFSTraverse(AlGraph &graph) {
+    bool visited[MAX_VERTEX_NUM];
+    for (bool &i: visited) {
+        i = false;
+    }
+    cout << "BFS traverse: ";
+
+    List<int> queue;
+    queue.add(0);
+    while (queue.size > 0) {
+        int i = *queue.take();
+        if (visited[i]) {
+            continue;
+        }
+        visited[i] = true;
+        VNode *v = &graph.vertices[i];
+        cout << v->data << " ";
+        for (ArcNode *p = v->firstArc; p; p = p->nextArc) {
+            queue.add(p->adjVex);
+        }
+    }
+
+
+    cout << endl;
+}

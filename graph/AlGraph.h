@@ -40,4 +40,8 @@ void topologicalSort(AlGraph &graph, int *&ve, List<int> &s);
 
 void criticalPath(AlGraph &graph);
 
+void DFSTraverse(AlGraph &graph);
+
+void BFSTraverse(AlGraph &graph);
+
 #endif //C_LEARNING_ALGRAPH_H
